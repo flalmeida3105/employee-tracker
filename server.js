@@ -27,5 +27,5 @@ db.connect(err => {
     });
 });
 
-new InitializeQuestions().getUserResponse();
+InitializeQuestions();
 
