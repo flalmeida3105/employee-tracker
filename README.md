@@ -39,7 +39,7 @@ The following languages were used to build this project.
 ## Setup
 Please follow the step by step below to implement this project. 
 
-Step1: Clone the employee-tracker repo from https://github.com/flalmeida3105/employee-tracker to your local computer. <br> Step2: Navigate to the application's root folder. <br> Step3: Type npm init -y. <br> Step4: Type npm install. <br>  
+Step1: Clone the employee-tracker repo from https://github.com/flalmeida3105/employee-tracker to your local computer. <br> Step2: Navigate to the application's root folder. <br> Step3: Type npm init -y. <br> Step4: Type npm install. <br>  Note: This application uses MySQL server, so ensure to create a new database before starting the application. Schema and seed files are available in the db folder for testing purposes. <br>
 
 
 ## Usage
