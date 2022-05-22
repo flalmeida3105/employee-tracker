@@ -1,7 +1,6 @@
 //#region //Setting const
 const inquirer = require('inquirer');
-const db = require('../db/connection');
-const cTable = require('console.table');
+const db = require('./db/connection');
 
 const userChoice = {
     type: 'list',
@@ -36,7 +35,7 @@ function initializeQuestions() {
                 updateEmployee();
                 break; 
             case "Exit":
-                console.log("Good bye!")
+                console.log('\x1b[93m%s\x1b[0m',"\n>>>>>>>>>> Good Bye! <<<<<<<<<<<\n")
                 process.exit(0); 
             default: console.log("Please select a valid option")
         }
@@ -120,7 +119,7 @@ function addDepartment() {
 
         db.query(sql, params, (err) => {
             if (err) throw err;
-            console.log('Department ' + answer.name + ' inserted');
+            console.log('\x1b[93m%s\x1b[0m', '\n>>>>>>>>>> Department ' + answer.name + ' inserted! <<<<<<<<<<<\n');
             initializeQuestions();
         });
     });
@@ -178,7 +177,7 @@ function addRole() {
 
             db.query(sql, params, (err) => {
                 if (err) throw err;
-                console.log(`The Role ${answers.title} with a current salary of ${answers.salary} and assigned to ${answers.roleDepartment.split(' ')[0]} department was added`);
+                console.log('\x1b[93m%s\x1b[0m', `\n>>>>>>>>>> The Role ${answers.title} with a base salary of ${answers.salary} was assigned to the ${answers.roleDepartment.split(' ')[2]} department was added! <<<<<<<<<<<\n`);
                 initializeQuestions();
             });
         });
@@ -203,7 +202,6 @@ function addEmployee() {
     db.query(sql, function (err, result) {
         if (err) throw err;
 
-    // console.log(result)
         inquirer.prompt([
             {
                 type: 'text',
@@ -263,14 +261,14 @@ function addEmployee() {
 
                 db.query(sql, params, (err) => {
                     if (err) throw err;
-                    console.log(`The employee ${answers.firstName} ${answers.lastName} was added to the ${answers.roleList.split(' - ').pop()} department and reports to himself or herself!`);
+                    console.log('\x1b[93m%s\x1b[0m',`\n>>>>>>>>>> The employee ${answers.firstName} ${answers.lastName} was added to the ${answers.roleList.split(' - ').pop()} department and reports to himself or herself! <<<<<<<<<<<\n`);
                     initializeQuestions();
                 });
             } else {
                 const params = [answers.firstName, answers.lastName, answers.roleList.split(' ')[0], answers.managerList.split(' ')[0]];
                 db.query(sql, params, (err) => {
                     if (err) throw err;
-                    console.log(`The employee ${answers.firstName} ${answers.lastName}, was added to the ${answers.roleList.split(' - ').pop()} department and reports to ${answers.managerList.split(' - ').pop()}`);
+                    console.log('\x1b[93m%s\x1b[0m',`\n>>>>>>>>>> The employee ${answers.firstName} ${answers.lastName}, was added to the ${answers.roleList.split(' - ').pop()} department and reports to ${answers.managerList.split(' - ').pop()} <<<<<<<<<<<\n`);
                     initializeQuestions();
                 });
             };
@@ -296,7 +294,6 @@ function updateEmployee() {
     db.query(sql, function (err, result) {
         if (err) throw err;
 
-        console.log(result)
         inquirer.prompt([
             {
                 type: 'rawlist',
@@ -330,7 +327,7 @@ function updateEmployee() {
 
             db.query(sql, params, (err) => {
                 if (err) throw err;
-                console.log(`The employee ${answers.employeeList.split(' - ').pop()} has been assigned to a new ${answers.roleList.split(' - ').pop()} role`);
+                console.log('\x1b[93m%s\x1b[0m',`\n>>>>>>>>>> The employee ${answers.employeeList.split(' - ').pop()} has been assigned to the ${answers.roleList.split(' - ').pop()} role! <<<<<<<<<<<\n`);
                 initializeQuestions();
             });
         });
