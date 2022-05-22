@@ -1,6 +1,6 @@
 const express = require("express");
-const db = require('./db/connection');
-const InitializeQuestions = require('./lib/GetUserResponse');
+const db = require('../db/connection');
+const InitializeQuestions = require('../app');
 const apiRoutes = require('./routes/apiRoutes');
 
 const PORT = process.env.PORT || 3001;

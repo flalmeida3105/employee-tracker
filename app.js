@@ -1,7 +1,6 @@
 //#region //Setting const
 const inquirer = require('inquirer');
-const db = require('../db/connection');
-const cTable = require('console.table');
+const db = require('./db/connection');
 
 const userChoice = {
     type: 'list',
